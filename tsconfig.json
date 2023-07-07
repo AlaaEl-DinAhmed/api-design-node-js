@@ -8,7 +8,7 @@
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
-    "allowImportingTsExtensions": true
+    "moduleResolution": "node"
   },
   "ts-node": {
     "esm": true
