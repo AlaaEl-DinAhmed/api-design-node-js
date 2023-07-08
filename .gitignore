@@ -2,3 +2,4 @@
 /build
 .env
 prisma/migrations
+yarn-error.log
