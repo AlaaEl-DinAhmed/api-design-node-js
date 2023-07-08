@@ -3,7 +3,7 @@ import jwt, { Secret } from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { StatusCode } from "status-code-enum";
 
-export const comparePasswords = (password: string, hash: string) => {
+export const comparePasswords = (password: string) => {
   const saltRounds = 10;
 
   return bcrypt.hash(password, saltRounds);
