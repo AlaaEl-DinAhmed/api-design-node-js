@@ -1,10 +1,13 @@
 import { NextFunction, Request, Response } from "express";
-import jwt, { JwtPayload, Secret } from "jsonwebtoken";
+import jwt, { Secret } from "jsonwebtoken";
+import bcrypt from "bcrypt";
 import { StatusCode } from "status-code-enum";
 
-interface IRequest extends Request {
-  user: string | JwtPayload;
-}
+export const comparePasswords = (password: string, hash: string) => {
+  const saltRounds = 10;
+
+  return bcrypt.hash(password, saltRounds);
+};
 
 export const createJWT = ({ id, username }: any) => {
   const token = jwt.sign({ id, username }, process.env.JWT_SECRET as Secret);
@@ -13,7 +16,7 @@ export const createJWT = ({ id, username }: any) => {
 };
 
 export const protectGuardApi = (
-  req: IRequest,
+  req: any,
   res: Response,
   next: NextFunction
 ) => {
