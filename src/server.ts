@@ -4,7 +4,7 @@ import { productRouter } from "./routes/product.routes";
 import { updateRouter } from "./routes/update.routes";
 import { updatePointRouter } from "./routes/update-point.routes";
 import { protectGuardApi } from "./modules/auth";
-import { createUser, signIn } from "./controllers/users.controllers";
+import { createUser, signIn } from "./controllers/users.controller";
 
 const app = express();
 

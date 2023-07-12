@@ -1,18 +1,22 @@
 import { Router } from "express";
-import { body, validationResult } from "express-validator";
-import { StatusCode } from "status-code-enum";
 import { handlePostBodyErrors } from "../middlerwares/handlePostBodyErrors";
+import {
+  createProduct,
+  deleteProduct,
+  getOneProduct,
+  getProducts,
+} from "../controllers/products.controller";
+import { body } from "express-validator";
 
 export const productRouter = Router();
 
-productRouter.get("/product", (req, res) => {});
+productRouter.get("/products", getProducts);
+productRouter.get("/product/:id", handlePostBodyErrors, getOneProduct);
+productRouter.put("/product:id", () => {});
 productRouter.post(
-  "/product/:id",
+  "/product",
   body("name").isString(),
   handlePostBodyErrors,
-  (req, res) => {}
+  createProduct
 );
-
-productRouter.put("/product:id", () => {});
-productRouter.post("/product", () => {});
-productRouter.delete("/product/:id", () => {});
+productRouter.delete("/product/:id", deleteProduct);
