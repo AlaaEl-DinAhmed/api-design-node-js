@@ -8,31 +8,51 @@ import {
 } from "../repositories/products.repository";
 
 export const getProducts = async (req: any, res: Response) => {
-  const products = await queryUserProducts(req.user);
+  try {
+    const products = await queryUserProducts(req.user);
 
-  res.json({ data: products });
+    res.json({ data: products });
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
 };
 
 export const getOneProduct = async (req: Request, res: Response) => {
-  const products = await querySingeProduct(req);
+  try {
+    const products = await querySingeProduct(req);
 
-  res.json({ data: products });
+    res.json({ data: products });
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
 };
 
 export const createProduct = async (req: Request, res: Response) => {
-  const product = await addProduct(req);
+  try {
+    const product = await addProduct(req);
 
-  res.json({ data: product });
+    res.json({ data: product });
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
 };
 
 export const updateProduct = async (req: Request, res: Response) => {
-  const product = await updateSingleProduct(req);
+  try {
+    const product = await updateSingleProduct(req);
 
-  res.json({ data: product });
+    res.json({ data: product });
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
 };
 
 export const deleteProduct = async (req: Request, res: Response) => {
-  const product = await deleteSingleProduct(req);
+  try {
+    const product = await deleteSingleProduct(req);
 
-  res.json({ data: product });
+    res.json({ data: product });
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
 };
